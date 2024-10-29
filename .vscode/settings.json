@@ -14,7 +14,7 @@
     120
   ],
   "extensions.ignoreRecommendations": false,
-  "typescript.updateImportsOnFileMove.enabled": "prompt",
+  "typescript.updateImportsOnFileMove.enabled": "always",
   "typescript.format.insertSpaceBeforeFunctionParenthesis": true,
   "typescript.format.insertSpaceAfterConstructor": true,
   "typescript.tsdk": "node_modules/typescript/lib"

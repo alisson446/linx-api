@@ -1,7 +1,7 @@
 import jwt from 'jsonwebtoken';
 import { UsuarioRepository } from '../repositories/usuario.repository';
 import { injectable, inject } from 'tsyringe';
-import { IUsuarioResponse } from '../interfaces/Usuario';
+import { IUsuarioResponse } from '../interfaces/repositories/usuarios-repository.interface';
 
 interface User {
   id: string
@@ -12,14 +12,14 @@ interface User {
 export class AuthService {
   private secretKey: string
 
-  constructor(
+  constructor (
     @inject("UsuarioRepository")
     private usuarioRepository: UsuarioRepository
   ) {
     this.secretKey = process.env.JWT_SECRET_KEY || ''
   }
 
-  async authenticate(username: string, password: string): Promise<{
+  async authenticate (username: string, password: string): Promise<{
     userId: string,
     token: string
   } | null> {
