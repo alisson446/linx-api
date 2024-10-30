@@ -11,10 +11,24 @@ datasource db {
 }
 
 model Usuarios {
-  id       String  @id @default(uuid())
-  nome     String
-  email    String  @unique
-  username String  @unique
-  password String
-  salt     String?
+  id        String   @id @default(uuid())
+  nome      String
+  email     String   @unique
+  username  String   @unique
+  password  String
+  salt      String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  Post      Post[]
+}
+
+model Post {
+  id        String   @id @default(uuid())
+  titulo    String
+  conteudo  String
+  usuarioId String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  usuario Usuarios @relation(fields: [usuarioId], references: [id])
 }
