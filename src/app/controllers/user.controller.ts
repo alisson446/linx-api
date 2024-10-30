@@ -1,26 +1,33 @@
-import { UsuarioRepository } from '../repositories/usuario.repository'
+import { UserRepository } from '../repositories/user.repository'
 import { inject, injectable } from "tsyringe"
 import { Request, Response } from 'express'
 import { AuthService } from '../services/auth.service'
 
 @injectable()
-class UsuarioController {
+class UserController {
   constructor (
-    @inject("UsuarioRepository")
-    private usuarioRepository: UsuarioRepository,
-    private authService: AuthService = new AuthService(usuarioRepository)
+    @inject("UserRepository")
+    private userRepository: UserRepository,
+    private authService: AuthService = new AuthService(userRepository)
   ) { }
 
   create = async (request: Request, response: Response): Promise<void> => {
 
-    const res = await this.usuarioRepository.create(request.body)
+    const res = await this.userRepository.create(request.body)
+
+    response.status(200).send(res)
+  }
+
+  find = async (request: Request, response: Response): Promise<void> => {
+
+    const res = await this.userRepository.find(request.params.id)
 
     response.status(200).send(res)
   }
 
   login = async (request: Request, response: Response): Promise<void> => {
 
-    const res = await this.usuarioRepository.login(request.body.username, request.body.password)
+    const res = await this.userRepository.login(request.body.username, request.body.password)
 
     response.status(200).send(res)
   }
@@ -33,4 +40,4 @@ class UsuarioController {
 
 }
 
-export { UsuarioController }
+export { UserController }

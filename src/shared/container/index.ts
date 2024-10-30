@@ -2,13 +2,13 @@ import { container } from "tsyringe"
 import "reflect-metadata"
 
 //repositories
-import { UsuarioRepository } from '../../app/repositories/usuario.repository'
+import { UserRepository } from '../../app/repositories/user.repository'
 
 //interfaces
-import { IUsuarioRepository } from "../../app/interfaces/repositories/usuarios-repository.interface"
+import { IUserRepository } from "../../app/interfaces/repositories/users-repository.interface"
 
 
-container.registerSingleton<IUsuarioRepository>(
-  "UsuarioRepository",
-  UsuarioRepository
+container.registerSingleton<IUserRepository>(
+  "UserRepository",
+  UserRepository
 )

@@ -1,11 +1,11 @@
 import jwt from 'jsonwebtoken';
-import { UsuarioRepository } from '../repositories/usuario.repository';
+import { UserRepository } from '../repositories/user.repository';
 import { injectable, inject } from 'tsyringe';
-import { IUsuario } from '../interfaces/entities/usuario.entity';
+import { IUser } from '../interfaces/entities/user.entity';
 
 interface User {
   id: string
-  user: IUsuario
+  user: IUser
 }
 
 @injectable()
@@ -13,8 +13,8 @@ export class AuthService {
   private secretKey: string
 
   constructor (
-    @inject("UsuarioRepository")
-    private usuarioRepository: UsuarioRepository
+    @inject("UserRepository")
+    private usuarioRepository: UserRepository
   ) {
     this.secretKey = process.env.JWT_SECRET_KEY || ''
   }

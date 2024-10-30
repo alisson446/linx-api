@@ -1,15 +1,15 @@
 import { Request, Response, NextFunction } from "express"
 import { AuthService } from "../services/auth.service"
-import { UsuarioRepository } from "../repositories/usuario.repository";
+import { UserRepository } from "../repositories/user.repository";
 
-const usuarioRepository = new UsuarioRepository()
+const usuarioRepository = new UserRepository()
 const authService = new AuthService(usuarioRepository)
 
 const authenticateToken = async (request: Request, response: Response, next: NextFunction) => {
 
   const noAuthRoutes = [
-    "/usuarios/login",
-    "/usuarios/auth"
+    "/users/create",
+    "/users/auth"
   ]
 
   const authHeader = request.headers['authorization'];

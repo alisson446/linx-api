@@ -10,25 +10,25 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Usuarios {
+model Users {
   id        String   @id @default(uuid())
-  nome      String
+  name      String
   email     String   @unique
   username  String   @unique
   password  String
   salt      String?
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  Post      Post[]
+  Posts     Posts[]
 }
 
-model Post {
+model Posts {
   id        String   @id @default(uuid())
-  titulo    String
-  conteudo  String
-  usuarioId String
+  title     String
+  content   String
+  userId    String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  usuario Usuarios @relation(fields: [usuarioId], references: [id])
+  user Users @relation(fields: [userId], references: [id])
 }

@@ -1,11 +1,11 @@
-import { IUsuario } from "./usuario.entity"
+import { IUser } from "./user.entity"
 
 export interface IPost {
   id: string
-  titulo: string
-  conteudo: string
+  title: string
+  content: string
   createdAt: Date
   updatedAt: Date
-  usuarioId: string
-  Usuario?: IUsuario
+  userId: string
+  User?: IUser
 }
