@@ -1,7 +1,6 @@
 import express from 'express'
 import "reflect-metadata"
 import "express-async-errors"
-import "dotenv/config"
 import "./shared/container"
 import { authenticateToken } from "./app/middlewares/authentication.middleware"
 import { warning } from "./app/middlewares/error.middleware"

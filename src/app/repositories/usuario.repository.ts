@@ -1,10 +1,11 @@
 import { generatePassword, verifyPassword } from "../../shared/utils/encrypt"
 import prismaManager from "../database/database"
 import { Warning } from "../errors"
-import { IUsuario, IUsuarioDTO, IUsuarioResponse } from "../interfaces/repositories/usuarios-repository.interface"
+import { IUsuario } from "../interfaces/entities/usuario.entity"
+import { IUsuarioRepository, IUsuarioDTO } from "../interfaces/repositories/usuarios-repository.interface"
 import crypto from 'crypto'
 
-class UsuarioRepository implements IUsuario {
+class UsuarioRepository implements IUsuarioRepository {
 
   private prisma = prismaManager.getPrisma()
 
@@ -39,7 +40,7 @@ class UsuarioRepository implements IUsuario {
     }
   }
 
-  find = async (id: string): Promise<IUsuarioResponse | null> => {
+  find = async (id: string): Promise<IUsuario | null> => {
 
     const usuario = await this.prisma.usuarios.findUnique({
       where: {
@@ -55,7 +56,7 @@ class UsuarioRepository implements IUsuario {
 
   }
 
-  login = async (username: string, password: string): Promise<IUsuarioResponse> => {
+  login = async (username: string, password: string): Promise<IUsuario> => {
 
     const usuario = await this.prisma.usuarios.findUnique({
       where: {

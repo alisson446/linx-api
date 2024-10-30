@@ -1,11 +1,11 @@
 import jwt from 'jsonwebtoken';
 import { UsuarioRepository } from '../repositories/usuario.repository';
 import { injectable, inject } from 'tsyringe';
-import { IUsuarioResponse } from '../interfaces/repositories/usuarios-repository.interface';
+import { IUsuario } from '../interfaces/entities/usuario.entity';
 
 interface User {
   id: string
-  user: IUsuarioResponse
+  user: IUsuario
 }
 
 @injectable()

@@ -5,9 +5,10 @@ import "reflect-metadata"
 import { UsuarioRepository } from '../../app/repositories/usuario.repository'
 
 //interfaces
-import { IUsuario } from "../../app/interfaces/repositories/usuarios-repository.interface"
+import { IUsuarioRepository } from "../../app/interfaces/repositories/usuarios-repository.interface"
 
-container.registerSingleton<IUsuario>(
+
+container.registerSingleton<IUsuarioRepository>(
   "UsuarioRepository",
   UsuarioRepository
 )
