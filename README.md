@@ -1,6 +1,13 @@
 # linx-api
 
-Essa é uma aplicação backend com banco de dados.
+Essa é uma aplicação backend com os seguintes recursos inclusos:
+
+- [x] Instalação base (TypeScript + Express.js)
+- [x] Plugins essenciais do VSCode + depurador
+- [x] Lint + Prettier
+- [x] Automatização com Husky + Lint Staged
+- [x] Banco de Dados (PostgreSQL)
+- [x] ORM (Prisma) 
 
 Para rodar a aplicação, certifique-se que tenha o *docker* e *docker-compose* instalado em sua máquina, em seguinda rode o comando:
 
