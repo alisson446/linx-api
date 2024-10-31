@@ -1,15 +1,14 @@
 import { Request, Response, NextFunction } from "express"
 import { AuthService } from "../services/auth.service"
-import { UserRepository } from "../repositories/user.repository";
+import { container } from "tsyringe";
 
-const usuarioRepository = new UserRepository()
-const authService = new AuthService(usuarioRepository)
+const authService = container.resolve(AuthService)
 
 const authenticateToken = async (request: Request, response: Response, next: NextFunction) => {
 
   const noAuthRoutes = [
-    "/users/create",
-    "/users/auth"
+    "/users",
+    "/auth/login"
   ]
 
   const authHeader = request.headers['authorization'];
