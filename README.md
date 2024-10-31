@@ -6,4 +6,4 @@ Para rodar a aplicação, certifique-se que tenha o *docker* e *docker-compose* 
 docker compose up -d
 ```
 
-E acesse o projeto em `http://localhost:80`
+E acesse a url em `http://localhost:8000` e garanta que esteja recendo a mensagem `Unauthorized`
