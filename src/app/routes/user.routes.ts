@@ -3,9 +3,7 @@ import { userController } from "../controllers"
 
 const user = Router()
 
-user.post('/create', userController.create)
-user.get('/find/:id', userController.find)
-user.post('/login', userController.login)
-user.post('/auth', userController.auth)
+user.post('/', userController.create)
+user.get('/:id', userController.find)
 
 export { user }

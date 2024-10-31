@@ -1,4 +1,4 @@
-import { generatePassword, verifyPassword } from "../../shared/utils/encrypt"
+import { generatePassword } from "../../shared/utils/encrypt"
 import prismaManager from "../database/database"
 import { Warning } from "../errors"
 import { IUser } from "../interfaces/entities/user.entity"
@@ -14,7 +14,9 @@ class UserRepository implements IUserRepository {
     email,
     username,
     password
-  }: IUserDTO): Promise<string> => {
+  }: IUserDTO): Promise<{
+    id: string
+  }> => {
 
     try {
 
@@ -33,7 +35,7 @@ class UserRepository implements IUserRepository {
         }
       })
 
-      return id
+      return { id }
 
     } catch (error) {
       throw new Warning('Erro ao inserir Usuário', 400)
@@ -48,15 +50,11 @@ class UserRepository implements IUserRepository {
       }
     })
 
-    if (!user) {
-      throw new Warning("Usuário não encontrado", 400)
-    }
-
     return user
 
   }
 
-  login = async (username: string, password: string): Promise<IUser> => {
+  findByUserName = async (username: string): Promise<IUser | null> => {
 
     const user = await this.prisma.users.findUnique({
       where: {
@@ -64,17 +62,8 @@ class UserRepository implements IUserRepository {
       }
     })
 
-    if (!user) {
-      throw new Warning("Login ou senha incorretos", 401)
-    }
-
-    const passwordVerified = verifyPassword(password, user.salt || "", user.password)
-
-    if (!passwordVerified) {
-      throw new Warning("Login ou senha incorretos", 401)
-    }
-
     return user
+
   }
 
 }
