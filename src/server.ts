@@ -16,10 +16,7 @@ if (!process.env.JWT_SECRET_KEY) {
 }
 
 app.use(cors({
-  origin: [
-    /http?:\/\/localhost:\d+/,
-    'http://127.0.0.1:3000'
-  ]
+  origin: '*'
 }))
 
 app.use(express.json())

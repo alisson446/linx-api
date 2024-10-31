@@ -1,7 +1,7 @@
 version: '3.8'
 
 services:
-  api:
+  linx-api:
     build:
       context: .
       dockerfile: Dockerfile
